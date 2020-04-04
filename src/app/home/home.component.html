@@ -1,0 +1,12 @@
+<div class="header" *ngIf="user">
+  <div class="header-left">{{user.surname}} {{user.name}}</div>
+  <div class="header-right">{{user.username}}</div>
+</div>
+
+<mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+  <mat-button-toggle checked value="" (click)="toTasks()">My tasks</mat-button-toggle>
+  <mat-button-toggle value="" (click)="toCreate()">Create task</mat-button-toggle>
+  <mat-button-toggle value="" (click)="exit()">Exit</mat-button-toggle>
+</mat-button-toggle-group>
+
+<router-outlet></router-outlet>

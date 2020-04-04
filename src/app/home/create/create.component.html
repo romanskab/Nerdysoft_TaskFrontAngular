@@ -1,0 +1,29 @@
+<form #form='ngForm'>
+  <mat-form-field>
+    <textarea matInput
+              name="description"
+              [(ngModel)]="task.description"
+              rows="5"
+              required
+              placeholder="description of the task">
+      </textarea>
+  </mat-form-field>
+  <br>
+
+  <button mat-raised-button color="primary"
+          [disabled]="!form.valid"
+          (click)="create()"
+  >create
+  </button>
+</form>
+
+<br>
+
+<div *ngIf="isError" class="div-error">
+  There was some problems!!!<br>
+  The task wasn't created!!!
+</div>
+
+<div *ngIf="isSuccess" class="div-success">
+  Creating successful!
+</div>

@@ -1,0 +1,20 @@
+<form #loginForm='ngForm'>
+  <p>Log in</p>
+  <mat-form-field>
+    <input matInput name="username" type="text" placeholder="email" required [(ngModel)]="user.username">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput name="password" type="password" placeholder="password" required [(ngModel)]="user.password">
+  </mat-form-field>
+  <br>
+
+  <button mat-raised-button color="primary" [disabled]="loginForm.invalid" (click)="login()">log in</button>
+
+</form><br>
+
+<div *ngIf="isError" class="div-error">
+  <b>
+    Email or password is incorrect!!!
+  </b>
+</div>

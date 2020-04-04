@@ -1,0 +1,28 @@
+form {
+  text-align: center;
+}
+
+mat-form-field {
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+.div-error {
+  text-align: center;
+  color: red;
+  font-weight: bold;
+}
+
+.div-success {
+  text-align: center;
+  color: green;
+  font-size: large;
+  font-weight: bold;
+}
+
+p {
+  color: blue;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: auto;
+}

@@ -1,0 +1,67 @@
+<form #form='ngForm'>
+  <p>Registration</p>
+  <mat-form-field>
+    <input matInput
+           type="text"
+           name="surname"
+           placeholder="Surname"
+           minlength="2"
+           required
+           [(ngModel)]="user.surname">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput
+           type="text"
+           name="name"
+           placeholder="Name"
+           minlength="2"
+           required
+           [(ngModel)]="user.name">
+  </mat-form-field>
+  <br>
+
+  <mat-form-field>
+    <input matInput
+           type="email"
+           name="email"
+           placeholder="email"
+           required
+           [(ngModel)]="user.username">
+  </mat-form-field>
+  <br>
+
+  <mat-form-field>
+    <input matInput
+           type="password"
+           name="password"
+           placeholder="password"
+           minlength="2"
+           required
+           [(ngModel)]="user.password">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput
+           type="password"
+           name="password2"
+           placeholder="confirm password"
+           minlength="2"
+           required
+           [(ngModel)]="passValid"><br>
+  </mat-form-field>
+  <br>
+
+  <button mat-raised-button color="primary"
+          [disabled]="!(form.valid && user.password==passValid)"
+          (click)="register()"
+  >Register
+  </button>
+</form>
+
+<div *ngIf="isError" class="div-error">
+  User is not registered!!!<br>
+  A user with this email already exists!!!
+</div>
+
+<div *ngIf="isSuccess" class="div-success">
+  Registration successful!
+</div>

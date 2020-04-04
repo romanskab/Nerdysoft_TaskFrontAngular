@@ -1,0 +1,127 @@
+<table mat-table [dataSource]="tasks" *ngIf="isTable">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
+    <td mat-cell *matCellDef="let element">{{element.id}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef> Description</th>
+    <td mat-cell *matCellDef="let element">{{element.description}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="sender">
+    <th mat-header-cell *matHeaderCellDef>Sender</th>
+    <td mat-cell *matCellDef="let element">{{currentUser.username == element.senderEmail ? '': element.senderEmail}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="edit">
+    <th mat-header-cell *matHeaderCellDef>Edit</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-raised-button (click)="edit(element)">edit</button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="share">
+    <th mat-header-cell *matHeaderCellDef>Share</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-raised-button (click)="openShare(element)">share</button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef>Delete</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-raised-button (click)="delete(element)">delete</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+<div *ngIf="isSharing">
+  <p>Sharing</p>
+  <div class="center">Id: {{taskForShare.id}}</div>
+  <div class="center">Description: {{taskForShare.description}}</div>
+  <form #form='ngForm'>
+    <mat-form-field>
+    <textarea matInput
+              name="email"
+              type="email"
+              [(ngModel)]="email"
+              rows="5"
+              required
+              placeholder="email">
+      </textarea>
+    </mat-form-field>
+    <br>
+
+    <button mat-raised-button color="primary"
+            [disabled]="form.invalid"
+            (click)="share()"
+    >share
+    </button>
+  </form>
+
+  <br>
+
+  <div *ngIf="isError" class="div-error">
+    There was some problems!!!<br>
+    The task wasn't shared!!!
+  </div>
+
+  <div *ngIf="isSuccess" class="div-success">
+    Sharing successful!
+  </div>
+
+  <br>
+  <div class="textCenter">
+    <button (click)="closeForm()">
+      close the form
+    </button>
+  </div>
+</div>
+
+
+<div *ngIf="isEditing">
+  <p>Editing</p>
+  <div class="center">Id: {{taskForEdit.id}}</div>
+  <form #form='ngForm'>
+    <mat-form-field class="width50">
+    <textarea matInput
+              name="description"
+              [(ngModel)]="taskForEdit.description"
+              rows="5"
+              required
+              placeholder="description of the task">
+      </textarea>
+    </mat-form-field>
+    <br>
+
+    <button mat-raised-button color="primary"
+            [disabled]="form.invalid"
+            (click)="save()"
+    >save
+    </button>
+  </form>
+
+  <br>
+
+  <div *ngIf="isError" class="div-error">
+    There was some problems!!!<br>
+    The task wasn't edited!!!
+  </div>
+
+  <div *ngIf="isSuccess" class="div-success">
+    Editing successful!
+  </div>
+
+  <br>
+  <div class="textCenter">
+    <button (click)="closeForm()">
+      close the form
+    </button>
+  </div>
+
+</div>

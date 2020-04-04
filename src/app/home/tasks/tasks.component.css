@@ -1,0 +1,43 @@
+.wrapper {
+  padding-left: 15%;
+}
+
+table {
+  width: 100%;
+}
+
+p {
+  text-align: center;
+  color: blue;
+  font-size: large;
+  font-weight: bold;
+}
+
+form {
+  text-align: center;
+}
+
+.div-error {
+  text-align: center;
+  color: red;
+  font-weight: bold;
+}
+
+.div-success {
+  text-align: center;
+  color: green;
+  font-size: large;
+  font-weight: bold;
+}
+
+.center{
+  text-align: center;
+}
+
+.width50 {
+  width: 50%;
+}
+
+.textCenter{
+  text-align: center;
+}
